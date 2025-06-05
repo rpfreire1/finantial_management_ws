@@ -1,0 +1,53 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: finantial-system-ws
+  profiles:
+    default: local,dev-local
+    active: local,dev-local
+  jackson:
+    time-zone: UTC
+app:
+  api-license: "Apache 2.0"
+  api-license-url: "https://dentalsoft.com"
+  version: 0.0.1
+  title: Docs Finantial System Services API
+  description: Documentation
+  api-terms-of-service-url: "https://dentalsoft.com"
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    operations-sorter:  none
+    filter: trues
+    tags-sorter: none
+    try-it-out-enabled: true
+  paths-to-match: "/**"
+logging:
+  file:
+    path: /logs
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:- %5p} %m%n"
+      file:   "finantial-system-ws-%d %-5level [%thread] %logger : %msg%n"
+    level:
+      web: error
+      sql: error
+      root: INFO
+      org.springframework.web: DEBUG
+      org.springframework.boot: DEBUG
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+      org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+      org.hibernate.type.descriptor.sql.BasicFormatter: TRACE
+      org.hibernate.tool.hbm2ddl: TRACE
+      com.zaxxer.hikari: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    sampling:
+      probability: 1
+    enabled: false
