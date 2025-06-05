@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/finantial-management?stringtype=unspecified&reWriteBatchedInserts=true
+    username: postgres
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  tracing:
+    enabled: true

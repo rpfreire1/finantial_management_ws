@@ -1,0 +1,72 @@
+{
+  "properties": [{
+    "name": "app.version",
+    "type": "java.lang.String",
+    "description": "Description for app.version."
+  },{
+    "name": "app.title",
+    "type": "java.lang.String",
+    "description": "Description for app.title."
+  },
+    {
+      "name": "app.description",
+      "type": "java.lang.String",
+      "description": "Description for app.description."
+    },
+    {
+      "name": "app.apiTermsOfServiceUrl",
+      "type": "java.lang.String",
+      "description": "Description for app.apiTermsOfServiceUrl."
+    },
+    {
+      "name": "app.apiLicense",
+      "type": "java.lang.String",
+      "description": "Description for app.apiLicense."
+    },
+    {
+      "name": "app.apiLicenseUrl",
+      "type": "java.lang.String",
+      "description": "Description for app.apiLicenseUrl."
+    },
+    {
+      "name": "minio.images.bucket-name",
+      "type": "java.lang.String",
+      "description": "Description for minio.images.bucket-name."
+    },
+    {
+      "name": "minio.documents.bucket-name",
+      "type": "java.lang.String",
+      "description": "Description for minio.documents.bucket-name."
+    },
+    {
+      "name": "realm.token-url",
+      "type": "java.lang.String",
+      "description": "Description for realm.token-url."
+    },
+    {
+      "name": "app.minio.url",
+      "type": "java.lang.String",
+      "description": "Description for app.minio.url."
+    },
+    {
+      "name": "app.minio.accessKey",
+      "type": "java.lang.String",
+      "description": "Description for app.minio.accessKey."
+    },
+    {
+      "name": "app.minio.secretKey",
+      "type": "java.lang.String",
+      "description": "Description for app.minio.secretKey."
+    },
+    {
+      "name": "app.minio.bucketName",
+      "type": "java.lang.String",
+      "description": "Description for app.minio.bucketName."
+    },
+    {
+      "name": "app.minio.region",
+      "type": "java.lang.String",
+      "description": "Description for app.minio.region."
+    }
+  ]
+}
