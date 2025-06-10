@@ -2,9 +2,7 @@ package com.dentalsoft.finantialManagement.service.impl;
 
 import com.dentalsoft.finantialManagement.dto.SpentTypeDto;
 import com.dentalsoft.finantialManagement.entity.SpentType;
-import com.dentalsoft.finantialManagement.mapper.SpentMapper;
 import com.dentalsoft.finantialManagement.mapper.SpentTypeMapper;
-import com.dentalsoft.finantialManagement.repository.SpentRepository;
 import com.dentalsoft.finantialManagement.repository.SpentTypeRepository;
 import com.dentalsoft.finantialManagement.service.SpentTypeService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class SpentTypeServiceImpl implements SpentTypeService {
 
     @Override
     public SpentType getById(Long id) {
-        return spentTypeRepository.getValidById(id).orElseThrow(()->{
+        return spentTypeRepository.getValidById(id).orElseThrow(() -> {
             log.error("SpentType with id {} not found", id);
             return new RuntimeException("SpentType not found");
         });
@@ -29,7 +28,7 @@ public class SpentTypeServiceImpl implements SpentTypeService {
 
     @Override
     public SpentTypeDto getSpentTypeById(Long id) {
-        return spentTypeMapper.toDto(spentTypeRepository.getValidById(id).orElseThrow(()->{
+        return spentTypeMapper.toDto(spentTypeRepository.getValidById(id).orElseThrow(() -> {
             log.error("SpentType with id {} not found", id);
             return new RuntimeException("SpentType not found");
         }));
@@ -41,7 +40,7 @@ public class SpentTypeServiceImpl implements SpentTypeService {
     }
 
     @Override
-    public List<SpentTypeDto> getAll(Long id) {
+    public List<SpentTypeDto> getAll() {
         return this.spentTypeMapper.toDto(spentTypeRepository.findAll());
     }
 

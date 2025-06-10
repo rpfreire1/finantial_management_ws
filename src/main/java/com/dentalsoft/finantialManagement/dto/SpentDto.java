@@ -1,6 +1,5 @@
 package com.dentalsoft.finantialManagement.dto;
-import com.dentalsoft.finantialManagement.entity.SpentCategory;
-import com.dentalsoft.finantialManagement.entity.SpentType;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

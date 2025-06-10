@@ -9,7 +9,7 @@ public interface SpentTypeService {
     SpentType getById(Long id);
     SpentTypeDto getSpentTypeById(Long id);
     List<SpentTypeDto> getAllValid();
-    List<SpentTypeDto> getAll(Long id);
+    List<SpentTypeDto> getAll();
     SpentTypeDto create(SpentTypeDto spentTypeDto);
     SpentTypeDto update(SpentTypeDto spentTypeDto);
     Void delete(Long id);

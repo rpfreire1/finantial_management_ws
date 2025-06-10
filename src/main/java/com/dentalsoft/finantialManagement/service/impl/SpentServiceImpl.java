@@ -37,7 +37,7 @@ public class SpentServiceImpl implements SpentService {
         return this.spentMapper.toDto(spentRepository.getAllValid());    }
 
     @Override
-    public List<SpentDto> getAll(Long id) {
+    public List<SpentDto> getAll() {
         return this.spentMapper.toDto(spentRepository.findAll());
     }
 

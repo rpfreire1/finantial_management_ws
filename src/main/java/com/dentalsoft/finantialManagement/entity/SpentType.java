@@ -3,8 +3,6 @@ package com.dentalsoft.finantialManagement.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @Entity

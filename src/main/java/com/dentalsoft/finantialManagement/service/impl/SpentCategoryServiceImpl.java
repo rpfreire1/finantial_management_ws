@@ -1,7 +1,6 @@
 package com.dentalsoft.finantialManagement.service.impl;
 
 import com.dentalsoft.finantialManagement.dto.SpentCategoryDto;
-import com.dentalsoft.finantialManagement.entity.Spent;
 import com.dentalsoft.finantialManagement.entity.SpentCategory;
 import com.dentalsoft.finantialManagement.mapper.SpentCategoryMapper;
 import com.dentalsoft.finantialManagement.repository.SpentCategoryRepository;
@@ -21,7 +20,7 @@ public class SpentCategoryServiceImpl implements SpentCategoryService {
 
     @Override
     public SpentCategory getById(Long id) {
-        return spentCategoryRepository.getValidById(id).orElseThrow(()->{
+        return spentCategoryRepository.getValidById(id).orElseThrow(() -> {
             log.error("SpentCategory with id {} not found", id);
             return new RuntimeException("SpentCategory not found");
         });
@@ -29,7 +28,7 @@ public class SpentCategoryServiceImpl implements SpentCategoryService {
 
     @Override
     public SpentCategoryDto getSpentCategoryById(Long id) {
-        return spentCategoryMapper.toDto(spentCategoryRepository.getValidById(id).orElseThrow(()->{
+        return spentCategoryMapper.toDto(spentCategoryRepository.getValidById(id).orElseThrow(() -> {
             log.error("SpentCategory with id {} not found", id);
             return new RuntimeException("SpentCategory not found");
         }));
@@ -41,7 +40,7 @@ public class SpentCategoryServiceImpl implements SpentCategoryService {
     }
 
     @Override
-    public List<SpentCategoryDto> getAll(Long id) {
+    public List<SpentCategoryDto> getAll() {
         return this.spentCategoryMapper.toDto(spentCategoryRepository.findAll());
     }
 

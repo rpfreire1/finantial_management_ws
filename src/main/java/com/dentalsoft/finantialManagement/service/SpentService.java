@@ -12,7 +12,7 @@ public interface SpentService {
 
     List<SpentDto> getAllValid();
 
-    List<SpentDto> getAll(Long id);
+    List<SpentDto> getAll();
 
     SpentDto create(SpentDto spentDto);
 
