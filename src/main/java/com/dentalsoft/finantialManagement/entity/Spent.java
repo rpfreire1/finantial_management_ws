@@ -18,9 +18,9 @@ public class Spent {
     private BigDecimal spentAmount;
     private String spentDescription;
     @ManyToOne
-    @JoinColumn(name = "spent_category_id", nullable = false)
+    @JoinColumn(name = "spent_category_id",referencedColumnName = "id", nullable = true)
     private SpentCategory spentCategory;
     @ManyToOne
-    @JoinColumn(name = "spent_type_id", nullable = false)
+    @JoinColumn(name = "spent_type_id",referencedColumnName = "id", nullable = true)
     private SpentType spentType;
 }
