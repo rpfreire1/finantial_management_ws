@@ -4,7 +4,6 @@ import com.dentalsoft.finantialManagement.entity.SpentCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.lang.ScopedValue;
 import java.util.List;
 import java.util.Optional;
 
