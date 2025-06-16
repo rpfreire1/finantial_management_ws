@@ -18,8 +18,6 @@ public class SpentTypeDto  implements Serializable {
     @Serial
     private static final long serialVersionUID = 150175562909715751L;
     private Long id;
-    @Size(min = 1, max = 150 )
-    @NotBlank
     private String name;
 
     private String description;

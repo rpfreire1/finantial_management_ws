@@ -11,7 +11,7 @@ public interface SpentCategoryRepository extends JpaRepository<SpentCategory, Lo
     @Query("FROM SpentCategory e " +
             //"WHERE e.deletedAt IS NULL " +
             //"OR e.deletedAt > CURRENT_TIMESTAMP" +
-            "")
+            "where e.id = ?1 ")
     Optional<SpentCategory> getValidById(Long id);
 
     @Query("FROM SpentCategory e ")

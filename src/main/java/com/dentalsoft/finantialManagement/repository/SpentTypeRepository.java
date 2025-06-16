@@ -12,7 +12,7 @@ public interface SpentTypeRepository extends JpaRepository<SpentType, Long> {
     @Query("FROM SpentType e " +
             //"WHERE e.deletedAt IS NULL " +
             //"OR e.deletedAt > CURRENT_TIMESTAMP" +
-            "")
+            "WHERE e.id = ?1 " )
     Optional<SpentType> getValidById(Long id);
 
     @Query("FROM SpentType e ")

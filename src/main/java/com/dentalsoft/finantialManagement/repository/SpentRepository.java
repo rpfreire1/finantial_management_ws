@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SpentRepository extends JpaRepository<Spent, Long> {
-    @Query(//"WHERE e.deletedAt IS NULL " +
-//"OR e.deletedAt > CURRENT_TIMESTAMP" +
-            "FROM Spent e ")
+    @Query("FROM Spent e " +
+            //"WHERE e.deletedAt IS NULL " +
+            //"OR e.deletedAt > CURRENT_TIMESTAMP" +
+            " WHERE e.spentId  = ?1 " )
     Optional<Spent> getValidById(Long id);
 
     @Query("FROM Spent e ")

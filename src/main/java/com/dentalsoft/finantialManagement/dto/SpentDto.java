@@ -18,15 +18,10 @@ import java.time.LocalDate;
 public class SpentDto implements Serializable {
     @Serial
     private static final long serialVersionUID = -1755629097157518L;
-
     private Long spentId;
-
     private LocalDate spentDate;
-    @NotNull
     private BigDecimal spentAmount;
-
     private String spentDescription;
-
     private SpentTypeDto spentType;
     private SpentCategoryDto spentCategory;
 }
