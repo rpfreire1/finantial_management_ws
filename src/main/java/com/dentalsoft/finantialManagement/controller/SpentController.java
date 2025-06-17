@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("spent")
 @Tag(name = "Spent", description = "API for managing spent")
+
 public class SpentController {
     private final SpentService spentService;
 

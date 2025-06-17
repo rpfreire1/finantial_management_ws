@@ -19,7 +19,6 @@ public class SpentTypeDto  implements Serializable {
     private static final long serialVersionUID = 150175562909715751L;
     private Long id;
     private String name;
-
     private String description;
 
 }

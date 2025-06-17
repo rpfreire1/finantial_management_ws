@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("spent-type")
 @Tag(name = "Spent Type", description = "API for managing spent categories")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class SpentTypeController {
     private final SpentTypeService spentTypeService;
 
