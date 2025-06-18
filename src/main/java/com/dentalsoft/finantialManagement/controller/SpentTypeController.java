@@ -1,5 +1,6 @@
 package com.dentalsoft.finantialManagement.controller;
 
+import com.dentalsoft.finantialManagement.dto.SpentDto;
 import com.dentalsoft.finantialManagement.dto.SpentTypeDto;
 import com.dentalsoft.finantialManagement.service.SpentTypeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,32 +27,34 @@ public class SpentTypeController {
         log.info("{} : getAll", "Spent-CATEGORY");
         return spentTypeService.getAll();
     }
-
     @GetMapping
     @Operation(summary = "Get all valid spent categories", description = "Retrieve a list of all valid spent categories")
     public List<SpentTypeDto> getAllValid() {
         log.info("{} : getAllValid", "Spent-CATEGORY");
         return spentTypeService.getAllValid();
     }
-
     @PostMapping
     @Operation(summary = "Create a new spent category", description = "Create a new spent category with schema: SpentTypeDto")
     public SpentTypeDto create(@RequestBody @Valid SpentTypeDto spentTypeDto) {
         log.info("{} : create, spentTypeDto: {}", "Spent-CATEGORY", spentTypeDto);
         return spentTypeService.create(spentTypeDto);
     }
-
     @PutMapping
     @Operation(summary = "Update an existing spent category", description = "Update an existing spent category with schema: SpentTypeDto")
     public SpentTypeDto update(@RequestBody @Valid SpentTypeDto spentTypeDto) {
         log.info("{} : update, spentTypeDto: {}", "Spent-CATEGORY", spentTypeDto);
         return spentTypeService.update(spentTypeDto);
     }
-
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a spent category", description = "Delete a spent category by its ID")
     public void delete(@PathVariable Long id) {
         log.info("{} : delete, id: {}", "Spent-CATEGORY", id);
         spentTypeService.delete(id);
+    }
+    @GetMapping ("/{id}")
+    @Operation(summary = "Get spent type by ID", description = "Retrieve a spent type by its ID")
+    public SpentTypeDto getById(@PathVariable Long id) {
+        log.info("{} : getById, id: {}", "Spent-TYPE", id);
+        return spentTypeService.getSpentTypeById(id);
     }
 }

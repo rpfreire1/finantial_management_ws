@@ -1,10 +1,12 @@
 package com.dentalsoft.finantialManagement.entity;
 
+import com.dentalsoft.finantialManagement.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -13,9 +15,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-@Builder
-@EqualsAndHashCode
-public class SpentCategory implements Serializable {
+
+public class SpentCategory extends BaseEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = -631767203122514986L;
 
@@ -27,6 +28,17 @@ public class SpentCategory implements Serializable {
     private String name;
     @Column(nullable = false, name = "description")
     private String description;
-    @Version
-    private Long version;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SpentCategory that = (SpentCategory) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
 }

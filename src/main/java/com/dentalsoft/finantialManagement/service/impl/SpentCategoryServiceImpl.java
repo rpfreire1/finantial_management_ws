@@ -2,6 +2,7 @@ package com.dentalsoft.finantialManagement.service.impl;
 
 import com.dentalsoft.finantialManagement.dto.SpentCategoryDto;
 import com.dentalsoft.finantialManagement.entity.SpentCategory;
+import com.dentalsoft.finantialManagement.entity.SpentType;
 import com.dentalsoft.finantialManagement.mapper.SpentCategoryMapper;
 import com.dentalsoft.finantialManagement.repository.SpentCategoryRepository;
 import com.dentalsoft.finantialManagement.service.SpentCategoryService;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -52,14 +54,17 @@ public class SpentCategoryServiceImpl implements SpentCategoryService {
 
     @Override
     public SpentCategoryDto update(SpentCategoryDto categoryDto) {
-        this.getById(categoryDto.getId());
-        return this.spentCategoryMapper.toDto(spentCategoryRepository.save(spentCategoryMapper.toEntity(categoryDto)));
+        SpentCategory spentCategory=this.getById(categoryDto.getId());
+        spentCategory.setName(categoryDto.getName());
+        spentCategory.setDescription(categoryDto.getDescription());
+        return this.spentCategoryMapper.toDto(spentCategoryRepository.save(spentCategory));
     }
 
     @Override
     public Void delete(Long id) {
         var spentCategory = this.getById(id);
-        spentCategoryRepository.delete(spentCategory);
+        spentCategory.setDeletedAt(LocalDateTime.now());
+        spentCategoryRepository.save(spentCategory);
         log.info("SpentCategory with id {} deleted successfully", id);
         return null;
     }

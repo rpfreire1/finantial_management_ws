@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -20,7 +21,7 @@ public class SpentTypeServiceImpl implements SpentTypeService {
 
     @Override
     public SpentType getById(Long id) {
-        return spentTypeRepository.getValidById(id).orElseThrow(() -> {
+        return this.spentTypeRepository.getValidById(id).orElseThrow(() -> {
             log.error("SpentType with id {} not found", id);
             return new RuntimeException("SpentType not found");
         });
@@ -52,15 +53,16 @@ public class SpentTypeServiceImpl implements SpentTypeService {
 
     @Override
     public SpentTypeDto update(SpentTypeDto spentTypeDto) {
-        this.getById(spentTypeDto.getId());
-        return this.spentTypeMapper.toDto(spentTypeRepository.save(spentTypeMapper.toEntity(spentTypeDto)));
+        SpentType spentType=this.getById(spentTypeDto.getId());
+        spentType.setName(spentTypeDto.getName());
+        spentType.setDescription(spentTypeDto.getDescription());
+        return this.spentTypeMapper.toDto(spentTypeRepository.save(spentType));
     }
-
     @Override
-    public Void delete(Long id) {
-        var spentCategory = this.getById(id);
-        spentTypeRepository.delete(spentCategory);
+    public void delete(Long id) {
+        var spentType = this.getById(id);
+        spentType.setDeletedAt(LocalDateTime.now());
+        spentTypeRepository.save(spentType);
         log.info("SpentType with id {} deleted successfully", id);
-        return null;
     }
 }

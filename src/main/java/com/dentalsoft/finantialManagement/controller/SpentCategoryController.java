@@ -53,4 +53,10 @@ public class SpentCategoryController {
         log.info("{} : delete, id: {}", "Spent-CATEGORY", id);
         spentCategoryService.delete(id);
     }
+    @GetMapping ("/{id}")
+    @Operation(summary = "Get spent category by ID", description = "Retrieve a spent category by its ID")
+    public SpentCategoryDto getById(@PathVariable Long id) {
+        log.info("{} : getById, id: {}", "Spent-CATEGORY", id);
+        return spentCategoryService.getSpentCategoryById(id);
+    }
 }

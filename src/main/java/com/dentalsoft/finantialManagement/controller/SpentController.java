@@ -1,5 +1,6 @@
 package com.dentalsoft.finantialManagement.controller;
 
+import com.dentalsoft.finantialManagement.dto.SpentCategoryDto;
 import com.dentalsoft.finantialManagement.dto.SpentDto;
 import com.dentalsoft.finantialManagement.service.SpentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -53,5 +54,11 @@ public class SpentController {
     public void delete(@PathVariable Long id) {
         log.info("{} : delete, id: {}", "Spent", id);
         spentService.delete(id);
+    }
+    @GetMapping ("/{id}")
+    @Operation(summary = "Get spent by ID", description = "Retrieve a spent by its ID")
+    public SpentDto getById(@PathVariable Long id) {
+        log.info("{} : getById, id: {}", "Spent", id);
+        return spentService.getSpentById(id);
     }
 }

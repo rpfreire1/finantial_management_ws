@@ -12,5 +12,5 @@ public interface SpentTypeService {
     List<SpentTypeDto> getAll();
     SpentTypeDto create(SpentTypeDto spentTypeDto);
     SpentTypeDto update(SpentTypeDto spentTypeDto);
-    Void delete(Long id);
+    void delete(Long id);
 }

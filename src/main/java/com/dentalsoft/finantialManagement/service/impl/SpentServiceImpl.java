@@ -2,6 +2,7 @@ package com.dentalsoft.finantialManagement.service.impl;
 
 import com.dentalsoft.finantialManagement.dto.SpentDto;
 import com.dentalsoft.finantialManagement.entity.Spent;
+import com.dentalsoft.finantialManagement.entity.SpentType;
 import com.dentalsoft.finantialManagement.mapper.SpentMapper;
 import com.dentalsoft.finantialManagement.repository.SpentRepository;
 import com.dentalsoft.finantialManagement.repository.SpentTypeRepository;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -48,8 +50,7 @@ public class SpentServiceImpl implements SpentService {
 
     @Override
     public SpentDto create(SpentDto spentDto) {
-        Spent spent=Spent.builder().build();
-        spent=this.spentMapper.toEntity(spentDto);
+        Spent spent=this.spentMapper.toEntity(spentDto);
         // Asegurarse de que es una nueva entidad
         spent.setSpentId(null);
         spent.setVersion(null);
@@ -63,13 +64,20 @@ public class SpentServiceImpl implements SpentService {
 
     @Override
     public SpentDto update(SpentDto spentDto) {
-        this.getById(spentDto.getSpentId());
-        return this.spentMapper.toDto(spentRepository.save(spentMapper.toEntity(spentDto)));    }
+        Spent spent=this.spentMapper.toEntity(spentDto);
+        spent.setVersion(this.spentRepository.getById(spentDto.getSpentId()).getVersion());
+        System.out.println("spentDto: " + spentDto);
+        spent.setSpentType(spentTypeService.getById(spentDto.getSpentType().getId()));
+        spent.setSpentCategory(spentCategoryService.getById(spentDto.getSpentCategory().getId()));
+
+        return this.spentMapper.toDto(spentRepository.save(spent));
+    }
 
     @Override
-    public Void delete(Long id) {
+    public void delete(Long id) {
         var spent = this.getById(id);
-        spentRepository.delete(spent);
-        log.info("SpentCategory with id {} deleted successfully", id);
-        return null;    }
+        spent.setDeletedAt(LocalDateTime.now());
+        spentRepository.save(spent);
+        log.info("Spent with id {} deleted successfully", id);
+    }
 }

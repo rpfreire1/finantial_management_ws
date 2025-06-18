@@ -1,22 +1,14 @@
 package com.dentalsoft.finantialManagement.repository;
 
+import com.dentalsoft.finantialManagement.entity.Spent;
 import com.dentalsoft.finantialManagement.entity.SpentCategory;
+import com.dentalsoft.finantialManagement.repository.common.BaseRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface SpentCategoryRepository extends JpaRepository<SpentCategory, Long> {
-    @Query("FROM SpentCategory e " +
-            //"WHERE e.deletedAt IS NULL " +
-            //"OR e.deletedAt > CURRENT_TIMESTAMP" +
-            "where e.id = ?1 ")
-    Optional<SpentCategory> getValidById(Long id);
+public interface SpentCategoryRepository extends BaseRepository<SpentCategory, Long> {
 
-    @Query("FROM SpentCategory e ")
-    /*+
-            "WHERE e.deletedAt IS NULL " +
-            "OR e.deletedAt > CURRENT_TIMESTAMP")*/
-    List<SpentCategory> getAllValid();
 }

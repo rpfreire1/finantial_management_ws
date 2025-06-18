@@ -18,5 +18,5 @@ public interface SpentService {
 
     SpentDto update(SpentDto spentDto);
 
-    Void delete(Long id);
+   void delete(Long id);
 }
